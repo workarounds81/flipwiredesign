@@ -5,9 +5,10 @@
 export const site = {
   name: "Flipwire Design",
   legalName: "Flipwire Design Pte Ltd",
-  tagline: "Interior architecture and design",
+  tagline: "Interior design and renovation, Singapore",
+  // Drives the meta description and the home page intro. ~155 characters.
   description:
-    "Flipwire Design Pte Ltd is an interior architecture and design studio creating considered residential, hospitality and commercial spaces.",
+    "Flipwire Design Pte Ltd is a Singapore interior design practice. Renovation, built-in carpentry and fit-out for HDB and condominium homes and commercial spaces.",
   // Update once the domain is pointed at the deployment.
   url: "https://www.flipwiredesign.com",
   email: "studio@flipwiredesign.com",
@@ -20,7 +21,7 @@ export const site = {
     country: "SG",
   },
   social: {
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/flipwire/",
     linkedin: "https://www.linkedin.com/",
   },
 } as const;
@@ -30,3 +31,16 @@ export const nav = [
   { href: "/studio", label: "Studio" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/**
+ * Prefix a path under /public with the deployment's base path.
+ *
+ * Needed because the static export runs with `images.unoptimized`, and an
+ * unoptimised <Image> passes `src` through untouched — Next only rewrites the
+ * paths it generates itself. On a root domain BASE_PATH is empty and this is a
+ * no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
+ */
+export function assetPath(path: string) {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}${path}`;
+}

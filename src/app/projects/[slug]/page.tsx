@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectMeta } from "@/components/ProjectGrid";
 import { getProject, projects } from "@/content/projects";
+import { assetPath } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -29,16 +31,18 @@ export default async function ProjectPage({ params }: Params) {
   return (
     <article className="mx-auto max-w-[1680px] px-6 py-24 md:px-10 md:py-32">
       <header className="mx-auto max-w-3xl text-center">
-        <p className="label text-muted">
-          {project.discipline} &nbsp;|&nbsp; {project.location} &nbsp;|&nbsp; {project.year}
-        </p>
+        <ProjectMeta project={project} />
         <h1 className="mt-6 font-display text-4xl font-light md:text-5xl">{project.title}</h1>
         <p className="mt-8 text-base leading-relaxed text-ink-soft">{project.excerpt}</p>
+        <p className="label mt-6 text-muted">
+          {project.scope.join("  ·  ")}
+          {project.areaSqft ? `  ·  ${project.areaSqft.toLocaleString()} sqft` : ""}
+        </p>
       </header>
 
       <div className="relative mt-16 aspect-[16/9] overflow-hidden bg-bone-deep">
         <Image
-          src={project.cover}
+          src={assetPath(project.cover)}
           alt={`${project.title}, ${project.location}`}
           fill
           priority
@@ -58,7 +62,7 @@ export default async function ProjectPage({ params }: Params) {
           {project.gallery.slice(1).map((src) => (
             <div key={src} className="relative aspect-[4/5] overflow-hidden bg-bone-deep">
               <Image
-                src={src}
+                src={assetPath(src)}
                 alt={project.title}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"

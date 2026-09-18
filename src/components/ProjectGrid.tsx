@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/content/projects";
+import { assetPath } from "@/lib/site";
+
+/** The meta line under each card: category, unit type, year. */
+export function ProjectMeta({ project }: { project: Project }) {
+  const parts = [project.category, project.unitType, String(project.year)];
+  return <p className="label text-muted">{parts.join("  |  ")}</p>;
+}
 
 export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   return (
@@ -8,7 +15,7 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
       <Link href={`/projects/${project.slug}`} className="group block">
         <div className="media-zoom relative aspect-[4/5] overflow-hidden bg-bone-deep">
           <Image
-            src={project.cover}
+            src={assetPath(project.cover)}
             alt={`${project.title}, ${project.location}`}
             fill
             priority={priority}
@@ -19,15 +26,19 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
 
         <h3 className="label mt-6 group-hover:text-copper">{project.title}</h3>
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink-soft">{project.excerpt}</p>
-        <p className="label mt-4 text-muted">
-          {project.discipline} &nbsp;|&nbsp; {project.location} &nbsp;|&nbsp; {project.year}
-        </p>
+        <div className="mt-4">
+          <ProjectMeta project={project} />
+        </div>
       </Link>
     </article>
   );
 }
 
 export function ProjectGrid({ projects }: { projects: Project[] }) {
+  if (projects.length === 0) {
+    return <p className="py-20 text-center text-sm text-ink-soft">No projects in this category yet.</p>;
+  }
+
   return (
     <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 xl:grid-cols-3">
       {projects.map((project, i) => (

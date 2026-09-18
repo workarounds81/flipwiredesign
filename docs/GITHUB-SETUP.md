@@ -72,19 +72,43 @@ contractors **Write** on a short leash, and anyone who only needs to review
 
 ## Deployment
 
-The site builds to static output, so hosting is cheap and the choice is mostly
-about image handling.
+Two builds ship from the same codebase:
 
-### Vercel (recommended)
+- **Default** — server build, `next/image` optimisation on. Use for production.
+- **`STATIC_EXPORT=1`** — static files in `out/`, image optimisation off. Used by
+  the Pages preview and any file-only host.
 
-Made by the Next.js team; `next/image` optimisation, previews and caching work with
-no configuration.
+### Preview on GitHub Pages (no external account)
 
-1. vercel.com → **Add New → Project** → import `workarounds81/flipwiredesign`
-2. Framework preset is detected as Next.js; leave build settings alone
-3. Add the domain under **Project → Settings → Domains**
+`.github/workflows/preview.yml` builds and deploys on every push to `main`. Turn
+it on once:
 
-Every PR gets a preview URL — worth it when the client is reviewing layout changes.
+**Settings -> Pages -> Build and deployment -> Source -> GitHub Actions**
+
+The preview then lives at `https://workarounds81.github.io/flipwiredesign/`.
+`BASE_PATH` is wired to that subdirectory automatically.
+
+Two caveats:
+
+- Pages on a **private** repo needs GitHub Pro / Team. On the free plan, either
+  make the repo public or use Vercel below.
+- The preview is publicly reachable by anyone with the link. `robots.txt` on the
+  Pages URL still reads from `site.url`, so add a password-protected host instead
+  if the work must stay unlisted before launch.
+
+### Vercel (recommended for production)
+
+Made by the Next.js team; `next/image` optimisation, per-PR previews and caching
+work with no configuration.
+
+1. vercel.com -> **Add New -> Project** -> import `workarounds81/flipwiredesign`
+2. Framework preset is detected as Next.js; leave the build settings alone. Do
+   **not** set `STATIC_EXPORT` or `BASE_PATH` — production runs the default build
+3. **Project -> Settings -> Domains** -> add `flipwiredesign.com` and
+   `www.flipwiredesign.com`; Vercel prints the exact DNS records to create
+
+Every pull request gets its own preview URL, which is what you want once the
+client starts reviewing layout changes.
 
 ### Cloudflare Pages
 
@@ -107,14 +131,18 @@ Compress project photography by hand first — unoptimised interiors shots are h
 
 ---
 
-## DNS
+## DNS for flipwiredesign.com
 
-Point `flipwiredesign.com` at the host after the first successful deploy:
+Point the domain at the host after the first successful deploy. Take the exact
+values from the host's dashboard rather than copying them from here — they change.
 
-- `CNAME` on `www` → the host's target (e.g. `cname.vercel-dns.com`)
-- `A` or `ALIAS` on the apex → the host's address
-- Redirect apex → `www` (or the reverse) at the host, so only one canonical hostname
-  is indexed
+- `CNAME` on `www` -> the host's target (Vercel: `cname.vercel-dns.com`)
+- `A` or `ALIAS` on the apex -> the host's address
+- Pick one canonical hostname and redirect the other to it at the host, so
+  `flipwiredesign.com` and `www.flipwiredesign.com` are not both indexed
+
+DNS changes at the registrar can take a few hours to propagate. The host issues
+the TLS certificate automatically once the records resolve.
 
 Once it's live, update `site.url` in `src/lib/site.ts` — canonical URLs, OG images
 and `sitemap.xml` all read from it.

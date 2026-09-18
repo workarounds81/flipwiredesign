@@ -20,12 +20,16 @@ npm run dev        # http://localhost:3000
 | `npm run start`     | Serve the production build           |
 | `npm run lint`      | ESLint (Next.js core-web-vitals + TS)|
 | `npm run typecheck` | `tsc --noEmit`                       |
+| `npm run photos`    | Import and optimise project photos   |
+
+`STATIC_EXPORT=1 npm run build` emits a fully static site to `out/` instead —
+that's what the Pages preview uses.
 
 ## Where things live
 
 ```
 public/brand/        Logo files — see "Brand assets" below
-public/projects/     Project photography (placeholders committed for now)
+public/projects/     Project photography — see public/projects/README.md
 src/app/             Routes. Also holds icon/apple-icon/opengraph-image
 src/components/      Logo, header, footer, project grid
 src/content/         projects.ts — the project list and copy
@@ -50,10 +54,24 @@ the one import at the top of `src/components/Logo.tsx` and every placement updat
 The square mark is *derived* from the knot in the wordmark — it is a stand-in so the
 favicon isn't blank. Replace it when the designer supplies a proper monogram.
 
+## Adding a project
+
+```bash
+npm run photos -- ~/path/to/photos bto-four-room
+```
+
+Optimises the images into `public/projects/<slug>/` and prints the `cover` and
+`gallery` block to paste into `src/content/projects.ts`. Details in
+[`public/projects/README.md`](public/projects/README.md).
+
 ## Before launch
 
-Fill in `src/lib/site.ts`: UEN, street address, phone, real social URLs, and the
-production domain (`url`, which drives canonical tags, OG images and the sitemap).
+- Replace every `TODO` in `src/content/projects.ts` — the project entries are
+  scaffolding, not copy.
+- Replace the placeholder images with real photography.
+- Fill in `src/lib/site.ts`: UEN, street address, phone, and the production domain
+  (`url`, which drives canonical tags, OG images and the sitemap).
+- Rewrite the `<h1>` on the home page and the body copy on `/studio`.
 
 ## Deployment
 
