@@ -10,7 +10,7 @@ export const site = {
   description:
     "Flipwire Design Pte Ltd is a Singapore interior design practice. Renovation, built-in carpentry and fit-out for HDB and condominium homes and commercial spaces.",
   url: "https://www.flipwiredesign.com",
-  email: "studio@flipwiredesign.com",
+  email: "info@flipwiredesign.com",
   // Widened to string so the "no phone yet" branches stay live under `as const`.
   phone: "" as string, // e.g. "+65 6xxx xxxx" — shown on the contact page once set
   uen: "201613746K",
