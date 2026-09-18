@@ -81,9 +81,12 @@ Pushing to `main` builds a static export and publishes it to GitHub Pages.
 - Production: <https://www.flipwiredesign.com> (canonical hostname; the apex
   redirects to it)
 
-`public/CNAME` pins the custom domain, so it survives every redeploy. See
-[`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) for the Spaceship DNS records,
-repository settings and the Vercel alternative.
+`public/CNAME` pins the custom domain, so it survives every redeploy.
+
+- [`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) — repository settings, branch
+  protection, the domain walkthrough and the Vercel alternative
+- [`docs/DNS-AND-EMAIL.md`](docs/DNS-AND-EMAIL.md) — the full DNS zone, how
+  studio email is wired, and why DMARC must stay at `p=none`
 
 ---
 
