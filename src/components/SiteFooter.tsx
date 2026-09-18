@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { nav, site } from "@/lib/site";
+import { addressLines, nav, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -33,7 +33,11 @@ export function SiteFooter() {
                 {site.email}
               </a>
             </li>
-            <li className="text-ink-soft">{site.address.city}</li>
+            {addressLines().map((line) => (
+              <li key={line} className="text-ink-soft">
+                {line}
+              </li>
+            ))}
             <li className="flex gap-4 pt-2">
               <a href={site.social.instagram} className="label hover:text-copper">
                 Instagram

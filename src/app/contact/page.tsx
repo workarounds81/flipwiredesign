@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -22,9 +22,31 @@ export default function ContactPage() {
             </a>
           </dd>
         </div>
+        {site.phone && (
+          <div>
+            <dt className="label text-muted">Telephone</dt>
+            <dd className="mt-2">
+              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-copper">
+                {site.phone}
+              </a>
+            </dd>
+          </div>
+        )}
         <div>
           <dt className="label text-muted">Studio</dt>
-          <dd className="mt-2 text-ink-soft">{site.address.city}</dd>
+          <dd className="mt-2 text-ink-soft">
+            {addressLines().map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </dd>
+        </div>
+        <div>
+          <dt className="label text-muted">Registration</dt>
+          <dd className="mt-2 text-ink-soft">
+            {site.legalName} &nbsp;·&nbsp; UEN {site.uen}
+          </dd>
         </div>
       </dl>
     </section>

@@ -9,15 +9,16 @@ export const site = {
   // Drives the meta description and the home page intro. ~155 characters.
   description:
     "Flipwire Design Pte Ltd is a Singapore interior design practice. Renovation, built-in carpentry and fit-out for HDB and condominium homes and commercial spaces.",
-  // Update once the domain is pointed at the deployment.
   url: "https://www.flipwiredesign.com",
   email: "studio@flipwiredesign.com",
-  phone: "+65 0000 0000",
-  uen: "", // Singapore UEN — fill in for the footer/legal pages
+  // Widened to string so the "no phone yet" branches stay live under `as const`.
+  phone: "" as string, // e.g. "+65 6xxx xxxx" — shown on the contact page once set
+  uen: "201613746K",
   address: {
-    street: "",
+    street: "3026 Ubi Road 1",
+    unit: "#03-168",
     city: "Singapore",
-    postalCode: "",
+    postalCode: "408719",
     country: "SG",
   },
   social: {
@@ -40,6 +41,12 @@ export const nav = [
  * paths it generates itself. On a root domain BASE_PATH is empty and this is a
  * no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
  */
+/** The postal address as lines, for a footer or contact block. */
+export function addressLines() {
+  const { street, unit, city, postalCode } = site.address;
+  return [[street, unit].filter(Boolean).join(", "), `${city} ${postalCode}`];
+}
+
 export function assetPath(path: string) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   return `${base}${path}`;

@@ -47,9 +47,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     logo: `${site.url}/brand/flipwire-wordmark.png`,
     address: {
       "@type": "PostalAddress",
+      streetAddress: [site.address.street, site.address.unit].filter(Boolean).join(", "),
       addressLocality: site.address.city,
+      postalCode: site.address.postalCode,
       addressCountry: site.address.country,
     },
+    ...(site.phone ? { telephone: site.phone } : {}),
+    sameAs: [site.social.instagram, site.social.linkedin],
   };
 
   return (
