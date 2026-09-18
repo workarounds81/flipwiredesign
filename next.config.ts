@@ -14,7 +14,11 @@ import type { NextConfig } from "next";
  * GitHub Pages project site (`/flipwiredesign`). Leave unset for a root domain.
  */
 const isStaticExport = process.env.STATIC_EXPORT === "1";
-const basePath = process.env.BASE_PATH ?? "";
+
+// GitHub Pages reports "/" (not "") once a custom domain serves the site from
+// the root. Next rejects a basePath of "/", so normalise it away.
+const rawBasePath = process.env.BASE_PATH ?? "";
+const basePath = rawBasePath === "/" ? "" : rawBasePath.replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

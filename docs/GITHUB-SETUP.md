@@ -131,21 +131,108 @@ Compress project photography by hand first — unoptimised interiors shots are h
 
 ---
 
-## DNS for flipwiredesign.com
+## Putting the site on flipwiredesign.com
 
-Point the domain at the host after the first successful deploy. Take the exact
-values from the host's dashboard rather than copying them from here — they change.
+The domain is registered at Namecheap. The site is served by GitHub Pages. Two
+things have to line up: DNS at Namecheap, and the custom domain setting on
+GitHub. Do them in that order.
 
-- `CNAME` on `www` -> the host's target (Vercel: `cname.vercel-dns.com`)
-- `A` or `ALIAS` on the apex -> the host's address
-- Pick one canonical hostname and redirect the other to it at the host, so
-  `flipwiredesign.com` and `www.flipwiredesign.com` are not both indexed
+`www.flipwiredesign.com` is the canonical hostname — it matches `site.url` in
+`src/lib/site.ts` and the committed `public/CNAME`. The apex
+(`flipwiredesign.com`) redirects to it, which GitHub does automatically once the
+records below exist.
 
-DNS changes at the registrar can take a few hours to propagate. The host issues
-the TLS certificate automatically once the records resolve.
+### Step 1 — DNS at Namecheap
 
-Once it's live, update `site.url` in `src/lib/site.ts` — canonical URLs, OG images
-and `sitemap.xml` all read from it.
+Namecheap dashboard -> **Domain List** -> **Manage** next to flipwiredesign.com
+-> **Advanced DNS**.
+
+Delete the two records Namecheap adds to every new domain first, or they will
+fight the ones below:
+
+- the `CNAME` on `www` pointing at `parkingpage.namecheap.com`
+- the `URL Redirect` / `A` record on `@` pointing at Namecheap parking
+
+Then **Add New Record** for each row:
+
+| Type  | Host | Value                         | TTL       |
+| ----- | ---- | ----------------------------- | --------- |
+| CNAME | www  | `workarounds81.github.io.`    | Automatic |
+| A     | @    | `185.199.108.153`             | Automatic |
+| A     | @    | `185.199.109.153`             | Automatic |
+| A     | @    | `185.199.110.153`             | Automatic |
+| A     | @    | `185.199.111.153`             | Automatic |
+| AAAA  | @    | `2606:50c0:8000::153`         | Automatic |
+| AAAA  | @    | `2606:50c0:8001::153`         | Automatic |
+| AAAA  | @    | `2606:50c0:8002::153`         | Automatic |
+| AAAA  | @    | `2606:50c0:8003::153`         | Automatic |
+
+Notes:
+
+- The CNAME value is `workarounds81.github.io` — the **account** host, with no
+  `/flipwiredesign` on the end. Namecheap accepts it with or without the
+  trailing dot.
+- The IP addresses above are GitHub's published Pages addresses. They change
+  rarely but they do change: confirm them against GitHub's
+  "Managing a custom domain for your GitHub Pages site" documentation before
+  typing them in.
+- The AAAA rows are optional. Skip them if Namecheap gives you trouble; the site
+  still works over IPv4.
+- Leave **Nameservers** on *Namecheap BasicDNS*. Do not change them.
+
+### Step 2 — Tell GitHub about the domain
+
+Repository **Settings -> Pages -> Custom domain**, enter
+`www.flipwiredesign.com` and **Save**.
+
+GitHub runs a DNS check. If it fails, the records have not propagated yet —
+wait and press save again rather than changing anything.
+
+Once the check passes, tick **Enforce HTTPS**. The checkbox stays greyed out
+until GitHub has issued the certificate, which usually takes a few minutes and
+occasionally up to an hour.
+
+### Step 3 — Confirm the build switched to the root
+
+Serving from a custom domain moves the site from `/flipwiredesign` to the domain
+root, so the base path has to disappear from every link and asset. The Preview
+workflow reads that from `actions/configure-pages`, so it happens on its own —
+but only on the next build.
+
+Push any commit to `main` (or **Actions -> Preview -> Run workflow**) after
+saving the custom domain, then load `https://www.flipwiredesign.com` and check
+that a project page and its images load, not just the home page.
+
+### How long it takes
+
+- Namecheap DNS: usually minutes, up to 48 hours worst case
+- GitHub certificate: minutes, occasionally an hour
+- Total, typically: under an hour
+
+### If it does not come up
+
+| Symptom                                | Cause                                                        |
+| -------------------------------------- | ------------------------------------------------------------ |
+| Namecheap parking page                 | The parking records were not deleted                          |
+| 404 on every page                      | Custom domain not saved in Settings -> Pages                   |
+| Home page works, everything else 404s  | The site was built before the domain was saved — re-run Preview |
+| Certificate error                      | HTTPS not enforced yet, or DNS still propagating               |
+| `www` works, apex does not             | The A/AAAA records on `@` are missing or wrong                 |
+
+Check propagation with `dig www.flipwiredesign.com +short` — it should return
+`workarounds81.github.io` followed by GitHub's addresses.
+
+### A caveat worth knowing
+
+GitHub Pages serves static files only, so `next/image` optimisation is off: every
+visitor gets the full-size JPEG. `npm run photos` caps images at 2400px and
+compresses them, so this is workable, but a phone still downloads a desktop-sized
+photo.
+
+If the site turns out to be image-heavy and slow, move it to Vercel. The domain
+moves with it — you would swap the Namecheap records for the ones Vercel prints,
+and drop `STATIC_EXPORT` so the default build with image optimisation runs. The
+code needs no changes.
 
 ## Content
 

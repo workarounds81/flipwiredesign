@@ -75,8 +75,15 @@ Optimises the images into `public/projects/<slug>/` and prints the `cover` and
 
 ## Deployment
 
-See [`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) for repository settings and
-hosting options.
+Pushing to `main` builds a static export and publishes it to GitHub Pages.
+
+- Preview: <https://workarounds81.github.io/flipwiredesign/>
+- Production: <https://www.flipwiredesign.com> (canonical hostname; the apex
+  redirects to it)
+
+`public/CNAME` pins the custom domain, so it survives every redeploy. See
+[`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) for the Namecheap DNS records,
+repository settings and the Vercel alternative.
 
 ---
 
