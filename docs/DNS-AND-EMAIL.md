@@ -19,7 +19,7 @@ managed at **Spaceship** (`spaceship.com`) on the nameservers
 | CNAME | www      | `workarounds81.github.io.`       | The canonical hostname for the site |
 | MX    | @ (10)   | `mx1.improvmx.com.`              | Inbound mail, primary |
 | MX    | @ (20)   | `mx2.improvmx.com.`              | Inbound mail, failover |
-| TXT   | @        | `v=spf1 include:spf.improvmx.com ~all` | SPF |
+| TXT   | @        | `v=spf1 include:spf.improvmx.com include:_spf.google.com ~all` | SPF |
 
 Web and mail are independent: changing the MX/TXT records cannot affect the
 website, and changing the A/CNAME records cannot affect mail.
@@ -72,9 +72,27 @@ Optional, monitoring only:
 `rua` reports arrive as daily XML attachments and are unreadable raw — point
 them at a free parser (EasyDMARC, dmarcian, Postmark) or omit `rua`.
 
-Adding `include:_spf.google.com` to SPF is commonly suggested but changes
-nothing here, because the outbound envelope sender is `gmail.com` and this
-domain's SPF record is never consulted for it.
+## SPF and the two envelope senders
+
+The SPF record covers both senders on purpose:
+
+- `include:spf.improvmx.com` — ImprovMX, for anything it relays
+- `include:_spf.google.com` — Google, for mail sent via `smtp.gmail.com`
+
+The Google include may be redundant. SPF is evaluated against the **envelope**
+sender, not the From header, and Gmail's "send mail as" may use the
+`flipwiredesign@gmail.com` envelope rather than the alias — in which case this
+domain's record is never consulted for outbound mail and the include does
+nothing. But if Gmail does use the alias as the envelope sender, then without
+it every message soft-fails SPF, which hurts deliverability. The include is
+cheap insurance either way, and if the alias *is* the envelope sender it also
+buys SPF alignment, which would make DMARC pass.
+
+Rather than reason about it, check a real message. Send one to a Gmail address,
+open **⋮ → Show original**, and read the `SPF`, `DKIM`, `DMARC` and
+`Return-Path` lines — they state which domain each check ran against.
+`mail-tester.com` gives the same information as a 0–10 score with the problems
+named.
 
 ## Reaching DMARC enforcement later
 
