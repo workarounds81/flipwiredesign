@@ -82,7 +82,7 @@ Pushing to `main` builds a static export and publishes it to GitHub Pages.
   redirects to it)
 
 `public/CNAME` pins the custom domain, so it survives every redeploy. See
-[`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) for the Namecheap DNS records,
+[`docs/GITHUB-SETUP.md`](docs/GITHUB-SETUP.md) for the Spaceship DNS records,
 repository settings and the Vercel alternative.
 
 ---

@@ -133,54 +133,58 @@ Compress project photography by hand first — unoptimised interiors shots are h
 
 ## Putting the site on flipwiredesign.com
 
-The domain is registered at Namecheap. The site is served by GitHub Pages. Two
-things have to line up: DNS at Namecheap, and the custom domain setting on
-GitHub. Do them in that order.
+The domain's DNS is managed at **Spaceship** (`spaceship.com`), on the
+Spaceship nameservers `launch1.spaceship.net` / `launch2.spaceship.net`. The
+site is served by GitHub Pages. Two things have to line up: the DNS records and
+the custom domain setting on GitHub. Do them in that order.
 
 `www.flipwiredesign.com` is the canonical hostname — it matches `site.url` in
 `src/lib/site.ts` and the committed `public/CNAME`. The apex
 (`flipwiredesign.com`) redirects to it, which GitHub does automatically once the
 records below exist.
 
-### Step 1 — DNS at Namecheap
+### Step 1 — DNS at Spaceship  ✅ done
 
-Namecheap dashboard -> **Domain List** -> **Manage** next to flipwiredesign.com
--> **Advanced DNS**.
+Spaceship -> **Advanced DNS** -> **DNS Records** -> **Add record**.
 
-Delete the two records Namecheap adds to every new domain first, or they will
-fight the ones below:
+Remove any parking or placeholder records on `@` and `www` first, or they will
+fight the ones below.
 
-- the `CNAME` on `www` pointing at `parkingpage.namecheap.com`
-- the `URL Redirect` / `A` record on `@` pointing at Namecheap parking
-
-Then **Add New Record** for each row:
+These nine records are in place and resolving:
 
 | Type  | Host | Value                         | TTL       |
 | ----- | ---- | ----------------------------- | --------- |
-| CNAME | www  | `workarounds81.github.io.`    | Automatic |
-| A     | @    | `185.199.108.153`             | Automatic |
-| A     | @    | `185.199.109.153`             | Automatic |
-| A     | @    | `185.199.110.153`             | Automatic |
-| A     | @    | `185.199.111.153`             | Automatic |
-| AAAA  | @    | `2606:50c0:8000::153`         | Automatic |
-| AAAA  | @    | `2606:50c0:8001::153`         | Automatic |
-| AAAA  | @    | `2606:50c0:8002::153`         | Automatic |
-| AAAA  | @    | `2606:50c0:8003::153`         | Automatic |
+| CNAME | www  | `workarounds81.github.io.`    | 30 min    |
+| A     | @    | `185.199.108.153`             | 30 min    |
+| A     | @    | `185.199.109.153`             | 30 min    |
+| A     | @    | `185.199.110.153`             | 30 min    |
+| A     | @    | `185.199.111.153`             | 30 min    |
+| AAAA  | @    | `2606:50c0:8000::153`         | 30 min    |
+| AAAA  | @    | `2606:50c0:8001::153`         | 30 min    |
+| AAAA  | @    | `2606:50c0:8002::153`         | 30 min    |
+| AAAA  | @    | `2606:50c0:8003::153`         | 30 min    |
 
 Notes:
 
 - The CNAME value is `workarounds81.github.io` — the **account** host, with no
-  `/flipwiredesign` on the end. Namecheap accepts it with or without the
-  trailing dot.
+  `/flipwiredesign` on the end. The trailing dot is optional.
 - The IP addresses above are GitHub's published Pages addresses. They change
   rarely but they do change: confirm them against GitHub's
   "Managing a custom domain for your GitHub Pages site" documentation before
   typing them in.
-- The AAAA rows are optional. Skip them if Namecheap gives you trouble; the site
-  still works over IPv4.
-- Leave **Nameservers** on *Namecheap BasicDNS*. Do not change them.
+- The AAAA rows are optional; the site works over IPv4 alone.
+- Leave the nameservers on Spaceship's defaults. Do not change them.
 
-### Step 2 — Tell GitHub about the domain
+Verify from a terminal:
+
+```bash
+python3 -c "import socket; print(socket.gethostbyname_ex('www.flipwiredesign.com'))"
+```
+
+It should report `workarounds81.github.io` and GitHub's `185.199.x.153`
+addresses.
+
+### Step 2 — Tell GitHub about the domain  ← next
 
 Repository **Settings -> Pages -> Custom domain**, enter
 `www.flipwiredesign.com` and **Save**.
@@ -205,7 +209,7 @@ that a project page and its images load, not just the home page.
 
 ### How long it takes
 
-- Namecheap DNS: usually minutes, up to 48 hours worst case
+- Spaceship DNS: usually minutes, up to 48 hours worst case
 - GitHub certificate: minutes, occasionally an hour
 - Total, typically: under an hour
 
@@ -213,11 +217,12 @@ that a project page and its images load, not just the home page.
 
 | Symptom                                | Cause                                                        |
 | -------------------------------------- | ------------------------------------------------------------ |
-| Namecheap parking page                 | The parking records were not deleted                          |
+| Registrar parking page                 | The parking records were not deleted                          |
 | 404 on every page                      | Custom domain not saved in Settings -> Pages                   |
 | Home page works, everything else 404s  | The site was built before the domain was saved — re-run Preview |
 | Certificate error                      | HTTPS not enforced yet, or DNS still propagating               |
 | `www` works, apex does not             | The A/AAAA records on `@` are missing or wrong                 |
+| Pages says the domain is in use        | The domain is set on another repository; remove it there first |
 
 Check propagation with `dig www.flipwiredesign.com +short` — it should return
 `workarounds81.github.io` followed by GitHub's addresses.
@@ -230,7 +235,7 @@ compresses them, so this is workable, but a phone still downloads a desktop-size
 photo.
 
 If the site turns out to be image-heavy and slow, move it to Vercel. The domain
-moves with it — you would swap the Namecheap records for the ones Vercel prints,
+moves with it — you would swap the Spaceship records for the ones Vercel prints,
 and drop `STATIC_EXPORT` so the default build with image optimisation runs. The
 code needs no changes.
 
