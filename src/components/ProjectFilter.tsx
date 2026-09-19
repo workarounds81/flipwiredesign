@@ -36,7 +36,7 @@ export function ProjectFilter({
             onClick={() => setActive(tab)}
             className={`label pb-1 transition-colors ${
               active === tab
-                ? "border-b border-copper text-copper"
+                ? "border-b border-clay text-clay-ink"
                 : "border-b border-transparent text-muted hover:text-ink"
             }`}
           >

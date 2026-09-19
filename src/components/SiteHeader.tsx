@@ -14,7 +14,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-line/70 bg-bone/85 backdrop-blur-sm">
       <div className="mx-auto flex max-w-[1680px] items-center justify-between px-6 py-5 md:px-10">
         {/* Masthead logo — the primary placement. */}
-        <Logo width={150} priority className="h-auto w-[132px] md:w-[168px]" />
+        {/* The lockup is stacked (~1.5:1), so it needs less width than a
+            horizontal wordmark to sit at a sensible masthead height. */}
+        <Logo width={116} priority className="h-auto w-[88px] md:w-[116px]" />
 
         <nav aria-label="Primary" className="hidden items-center gap-10 md:flex">
           {nav.map((item) => {
@@ -24,8 +26,8 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`label transition-colors hover:text-copper ${
-                  active ? "text-copper" : "text-ink"
+                className={`label transition-colors hover:text-clay-ink ${
+                  active ? "text-clay-ink" : "text-ink"
                 }`}
               >
                 {item.label}

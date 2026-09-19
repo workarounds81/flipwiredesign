@@ -73,7 +73,7 @@ export default async function ProjectPage({ params }: Params) {
         </div>
       )}
 
-      <Link href="/projects" className="label mt-20 inline-block border-b border-copper pb-1 text-copper">
+      <Link href="/projects" className="label mt-20 inline-block border-b border-clay pb-1 text-clay-ink">
         All projects
       </Link>
     </article>

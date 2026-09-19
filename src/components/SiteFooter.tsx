@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-[1680px] gap-12 px-6 py-16 md:grid-cols-3 md:px-10">
         <div>
           {/* Secondary logo placement — larger, decorative, not a link. */}
-          <Logo width={200} asLink={false} className="h-auto w-[180px]" />
+          <Logo width={168} asLink={false} className="h-auto w-[150px]" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink-soft">{site.tagline}</p>
         </div>
 
@@ -17,7 +17,7 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-2 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-copper">
+                <Link href={item.href} className="hover:text-clay-ink">
                   {item.label}
                 </Link>
               </li>
@@ -29,7 +29,7 @@ export function SiteFooter() {
           <h2 className="label text-muted">Contact</h2>
           <ul className="mt-5 space-y-2 text-sm">
             <li>
-              <a href={`mailto:${site.email}`} className="hover:text-copper">
+              <a href={`mailto:${site.email}`} className="hover:text-clay-ink">
                 {site.email}
               </a>
             </li>
@@ -39,10 +39,10 @@ export function SiteFooter() {
               </li>
             ))}
             <li className="flex gap-4 pt-2">
-              <a href={site.social.instagram} className="label hover:text-copper">
+              <a href={site.social.instagram} className="label hover:text-clay-ink">
                 Instagram
               </a>
-              <a href={site.social.linkedin} className="label hover:text-copper">
+              <a href={site.social.linkedin} className="label hover:text-clay-ink">
                 LinkedIn
               </a>
             </li>
@@ -56,7 +56,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} {site.legalName}
             {site.uen ? ` · UEN ${site.uen}` : ""}. All rights reserved.
           </p>
-          <Link href="/privacy" className="hover:text-copper">
+          <Link href="/privacy" className="hover:text-clay-ink">
             Privacy
           </Link>
         </div>

@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div>
           <dt className="label text-muted">Email</dt>
           <dd className="mt-2">
-            <a href={`mailto:${site.email}`} className="hover:text-copper">
+            <a href={`mailto:${site.email}`} className="hover:text-clay-ink">
               {site.email}
             </a>
           </dd>
@@ -26,7 +26,7 @@ export default function ContactPage() {
           <div>
             <dt className="label text-muted">Telephone</dt>
             <dd className="mt-2">
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-copper">
+              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-clay-ink">
                 {site.phone}
               </a>
             </dd>

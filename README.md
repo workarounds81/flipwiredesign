@@ -47,12 +47,21 @@ src/lib/site.ts      Company name, address, email, social links
 | `src/app/apple-icon.png`              | iOS home-screen icon                                 |
 | `src/app/opengraph-image.png`         | Link preview card for social and chat apps           |
 
-The wordmark is keyed out of the supplied JPG, so its edges are raster. **Ask the
-designer for the original vector** and drop in `flipwire-wordmark.svg`; then change
-the one import at the top of `src/components/Logo.tsx` and every placement updates.
+The wordmark is keyed out of the supplied JPG, so its edges are raster, and the
+supplied file is only 1024px wide — enough for the header and footer at their
+current sizes, with little headroom. **Ask the designer for the vector** and drop
+in `flipwire-wordmark.svg`; then change the one import at the top of
+`src/components/Logo.tsx` and every placement follows.
 
-The square mark is *derived* from the knot in the wordmark — it is a stand-in so the
-favicon isn't blank. Replace it when the designer supplies a proper monogram.
+The square mark is *derived*, not cropped from the artwork. The knot in the
+lockup is a single ribbon interlaced with the letterforms, so no part of it
+stands alone, and at 16px a crop is an unreadable smudge. The committed mark
+echoes its rounded-diamond geometry in the same clay gradient. Replace it when
+the designer supplies a proper monogram.
+
+Palette tokens in `src/app/globals.css` are sampled from the lockup. Note that
+`clay` (the artwork colour) only reaches 3.6:1 on the page background, so it is
+decorative only — anything readable uses `clay-ink`, which clears 4.5:1.
 
 ## Adding a project
 

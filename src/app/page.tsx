@@ -16,7 +16,7 @@ export default function HomePage() {
         <p className="mt-10 max-w-xl text-base leading-relaxed text-ink-soft">
           {site.description}
         </p>
-        <Link href="/projects" className="label mt-10 inline-block border-b border-copper pb-1 text-copper">
+        <Link href="/projects" className="label mt-10 inline-block border-b border-clay pb-1 text-clay-ink">
           View projects
         </Link>
       </section>

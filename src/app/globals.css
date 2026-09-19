@@ -5,16 +5,19 @@
    Colours sampled directly from the Flipwire wordmark.
    --------------------------------------------------------------- */
 @theme {
-  --color-ink: #3f4347;        /* wordmark charcoal */
-  --color-ink-soft: #6b7075;
-  --color-muted: #8a8a8a;      /* the full stop in the wordmark */
+  --color-ink: #323735;        /* wordmark charcoal */
+  --color-ink-soft: #676d6a;
+  --color-muted: #8a8a8a;
   --color-bone: #f3f0e9;       /* page background */
   --color-bone-deep: #e8e3d9;  /* alternating sections */
   --color-line: #d8d2c6;
 
-  --color-gold: #d9ae62;       /* knot, upper strand */
-  --color-gold-soft: #e3c07a;
-  --color-copper: #96542d;     /* knot, lower strand */
+  /* Sampled from the knot. `clay` is the artwork colour and is decorative
+     only — it lands at 3.6:1 on bone, short of the 4.5:1 needed for text.
+     `clay-ink` is the darkened variant used for anything readable (4.7:1). */
+  --color-clay: #9d765f;
+  --color-clay-ink: #8a6249;
+  --color-clay-soft: #d2ae94;
 
   --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -36,12 +39,12 @@
   }
 
   ::selection {
-    background-color: var(--color-gold-soft);
+    background-color: var(--color-clay-soft);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-copper);
+    outline: 2px solid var(--color-clay-ink);
     outline-offset: 3px;
   }
 }

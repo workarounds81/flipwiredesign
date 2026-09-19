@@ -24,7 +24,7 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           />
         </div>
 
-        <h3 className="label mt-6 group-hover:text-copper">{project.title}</h3>
+        <h3 className="label mt-6 group-hover:text-clay-ink">{project.title}</h3>
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink-soft">{project.excerpt}</p>
         <div className="mt-4">
           <ProjectMeta project={project} />
