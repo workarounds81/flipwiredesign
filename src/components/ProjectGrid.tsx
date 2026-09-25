@@ -3,9 +3,19 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import { assetPath } from "@/lib/site";
 
-/** The meta line under each card: category, unit type, year. */
+/**
+ * The meta line under each card. Only the fields that are actually known are
+ * printed, so a project catalogued from photography alone shows its category
+ * and nothing invented.
+ */
 export function ProjectMeta({ project }: { project: Project }) {
-  const parts = [project.category, project.unitType, String(project.year)];
+  const parts = [
+    project.category,
+    project.unitType,
+    project.location,
+    project.year?.toString(),
+  ].filter(Boolean);
+
   return <p className="label text-muted">{parts.join("  |  ")}</p>;
 }
 
@@ -16,7 +26,7 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
         <div className="media-zoom relative aspect-[4/5] overflow-hidden bg-bone-deep">
           <Image
             src={assetPath(project.cover)}
-            alt={`${project.title}, ${project.location}`}
+            alt={project.location ? `${project.title}, ${project.location}` : project.title}
             fill
             priority={priority}
             sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"

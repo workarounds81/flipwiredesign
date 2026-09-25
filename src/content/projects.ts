@@ -15,13 +15,27 @@ export type Project = {
   slug: string;
   title: string;
   category: Category;
+
+  /*
+   * Everything below down to `scope` is optional on purpose.
+   *
+   * Projects are catalogued from the photography, which shows the property
+   * type, the rooms and the carpentry but says nothing about the address, the
+   * completion year or the floor area. An omitted field renders as absent; a
+   * guessed one would read to a client as fact. Fill them in when known —
+   * never estimate.
+   */
+
   /** e.g. "4-room BTO", "Executive maisonette", "2-bedroom", "Café". */
-  unitType: string;
-  location: string;
+  unitType?: string;
+  /** Estate or district, e.g. "Punggol". Omit rather than guess. */
+  location?: string;
   /** Gross floor area in square feet — how briefs are quoted here. */
   areaSqft?: number;
+  /** Year of completion. Omit rather than guess. */
+  year?: number;
+
   scope: Scope[];
-  year: number;
   excerpt: string;
   body: string[];
   /** Paths under /public/projects. Run `npm run photos` to generate them. */

@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: Params) {
       <div className="relative mt-16 aspect-[16/9] overflow-hidden bg-bone-deep">
         <Image
           src={assetPath(project.cover)}
-          alt={`${project.title}, ${project.location}`}
+          alt={project.location ? `${project.title}, ${project.location}` : project.title}
           fill
           priority
           sizes="100vw"
