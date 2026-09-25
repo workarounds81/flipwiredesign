@@ -19,6 +19,11 @@ export function ProjectMeta({ project }: { project: Project }) {
   return <p className="label text-muted">{parts.join("  |  ")}</p>;
 }
 
+/**
+ * Grid card: image, title, meta. No description — the site is image-led, and a
+ * paragraph under every thumbnail competes with the photography for attention.
+ * Any writing lives on the project page.
+ */
 export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
   return (
     <article>
@@ -34,9 +39,8 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           />
         </div>
 
-        <h3 className="label mt-6 group-hover:text-clay-ink">{project.title}</h3>
-        <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink-soft">{project.excerpt}</p>
-        <div className="mt-4">
+        <h3 className="label mt-5 group-hover:text-clay-ink">{project.title}</h3>
+        <div className="mt-2">
           <ProjectMeta project={project} />
         </div>
       </Link>
@@ -50,7 +54,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
   }
 
   return (
-    <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-x-8 gap-y-16 md:grid-cols-2 xl:grid-cols-3">
       {projects.map((project, i) => (
         <ProjectCard key={project.slug} project={project} priority={i < 3} />
       ))}

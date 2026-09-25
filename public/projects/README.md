@@ -14,11 +14,13 @@ into `src/content/projects.ts`.
 
 ## Choosing shots
 
-The grid crops to 4:5 (portrait) and the project hero to 16:9. Shoot or crop with
-that in mind — a wide shot with the subject centred survives both.
+Only the **cover** is cropped — to 4:5 for the grid thumbnail, so centre the
+subject in whichever image you pick as the cover. Gallery images are shown at
+their natural aspect and are never cropped, so portrait and landscape can be
+mixed freely.
 
-Six to ten images per project is the right range. One establishing shot, then the
-details that justify the job: the carpentry run, the joinery junctions, the
+Six to ten images per project is the right range. One establishing shot, then
+the details that justify the job: the carpentry run, the joinery junctions, the
 lighting.
 
 ## A note on source material

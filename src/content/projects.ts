@@ -11,6 +11,13 @@ export type Scope =
   | "Fit-out"
   | "Reinstatement";
 
+export type Photo = {
+  /** Path under /public, e.g. "/projects/<slug>/01.jpg". */
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -36,11 +43,24 @@ export type Project = {
   year?: number;
 
   scope: Scope[];
-  excerpt: string;
-  body: string[];
-  /** Paths under /public/projects. Run `npm run photos` to generate them. */
+
+  /*
+   * Copy is optional too. The site is image-led: a project with good
+   * photography and no words reads better than one padded out with filler.
+   * Write an excerpt when there is something worth saying about the brief.
+   */
+  excerpt?: string;
+  body?: string[];
+
+  /** Grid thumbnail. Cropped to 4:5, so centre the subject. */
   cover: string;
-  gallery: string[];
+  /**
+   * Gallery images with their intrinsic dimensions, so each renders at its
+   * natural aspect instead of being cropped to a fixed shape. Interior work
+   * is shot both portrait and landscape and cropping butchers one of them.
+   * `npm run photos` measures these and prints the block to paste in.
+   */
+  gallery: Photo[];
   /** Feature on the home page "Selected work" grid. */
   featured?: boolean;
 };
@@ -57,54 +77,20 @@ export type Project = {
  * ---------------------------------------------------------------------------
  */
 export const projects: Project[] = [
+  /*
+   * Placeholder. Replaced as the studio's photography is catalogued — see
+   * public/projects/README.md.
+   */
   {
-    slug: "bto-four-room",
-    title: "TODO — 4-room BTO",
+    slug: "sample-project",
+    title: "TODO — replace with the first real project",
     category: "HDB",
-    unitType: "4-room BTO",
-    location: "Singapore",
-    areaSqft: 990,
     scope: ["Full renovation", "Carpentry"],
-    year: 2025,
-    excerpt:
-      "TODO — one or two sentences on the brief. What the owners asked for, and the one move that answered it.",
-    body: [
-      "TODO — what the flat looked like on handover and what changed.",
-      "TODO — the carpentry: kitchen run, wardrobe system, TV wall. Name the finishes.",
-    ],
     cover: "/projects/placeholder-01.jpg",
-    gallery: ["/projects/placeholder-01.jpg", "/projects/placeholder-02.jpg"],
-    featured: true,
-  },
-  {
-    slug: "condominium-two-bedroom",
-    title: "TODO — 2-bedroom condominium",
-    category: "Condominium",
-    unitType: "2-bedroom",
-    location: "Singapore",
-    areaSqft: 780,
-    scope: ["Full renovation", "Carpentry"],
-    year: 2025,
-    excerpt: "TODO — the brief in one or two sentences.",
-    body: ["TODO — the approach.", "TODO — materials and detailing."],
-    cover: "/projects/placeholder-02.jpg",
-    gallery: ["/projects/placeholder-02.jpg"],
-    featured: true,
-  },
-  {
-    slug: "cafe-fit-out",
-    title: "TODO — Café fit-out",
-    category: "Commercial",
-    unitType: "Café",
-    location: "Singapore",
-    areaSqft: 1200,
-    scope: ["Fit-out", "Carpentry"],
-    year: 2024,
-    excerpt:
-      "TODO — the operator's brief, the cover count, and what the counter and seating had to do.",
-    body: ["TODO — planning and circulation.", "TODO — joinery, counter, signage."],
-    cover: "/projects/placeholder-03.jpg",
-    gallery: ["/projects/placeholder-03.jpg"],
+    gallery: [
+      { src: "/projects/placeholder-01.jpg", width: 1600, height: 2000 },
+      { src: "/projects/placeholder-02.jpg", width: 1600, height: 2000 },
+    ],
     featured: true,
   },
 ];

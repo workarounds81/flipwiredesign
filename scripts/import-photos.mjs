@@ -59,12 +59,16 @@ for (const [i, file] of files.entries()) {
 
   const kb = Math.round(info.size / 1024);
   console.log(`  ${file}  ->  ${dest}  (${info.width}x${info.height}, ${kb} KB)`);
-  written.push(`/projects/${slug}/${name}`);
+  written.push({ src: `/projects/${slug}/${name}`, width: info.width, height: info.height });
 }
 
-const snippet = `  cover: ${JSON.stringify(written[0])},
+// Dimensions travel with each image so the gallery renders at natural aspect
+// rather than cropping portrait and landscape shots to one shape.
+const snippet = `  cover: ${JSON.stringify(written[0].src)},
   gallery: [
-${written.map((p) => `    ${JSON.stringify(p)},`).join("\n")}
+${written
+  .map((p) => `    { src: ${JSON.stringify(p.src)}, width: ${p.width}, height: ${p.height} },`)
+  .join("\n")}
   ],`;
 
 await writeFile(path.join(outDir, "_paths.txt"), snippet);
