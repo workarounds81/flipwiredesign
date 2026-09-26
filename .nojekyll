@@ -1,0 +1,3 @@
+# Pages is served from the GitHub Actions artifact, not a branch build.
+# This guards the fallback: if the source is ever switched back to branch
+# deployment, Jekyll would silently drop Next.js output under _next/.

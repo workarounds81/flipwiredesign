@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       addressCountry: site.address.country,
     },
     ...(site.phone ? { telephone: site.phone } : {}),
-    sameAs: [site.social.instagram, site.social.linkedin],
+    sameAs: [site.social.instagram, site.social.linkedin].filter(Boolean),
   };
 
   return (

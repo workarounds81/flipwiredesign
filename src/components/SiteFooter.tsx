@@ -42,9 +42,11 @@ export function SiteFooter() {
               <a href={site.social.instagram} className="label hover:text-clay-ink">
                 Instagram
               </a>
-              <a href={site.social.linkedin} className="label hover:text-clay-ink">
-                LinkedIn
-              </a>
+              {site.social.linkedin && (
+                <a href={site.social.linkedin} className="label hover:text-clay-ink">
+                  LinkedIn
+                </a>
+              )}
             </li>
           </ul>
         </div>

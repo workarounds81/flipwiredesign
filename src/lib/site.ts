@@ -23,7 +23,10 @@ export const site = {
   },
   social: {
     instagram: "https://www.instagram.com/flipwire/",
-    linkedin: "https://www.linkedin.com/",
+    // Empty until the studio has a company page. An empty string is skipped
+    // everywhere it is used, rather than publishing a link to linkedin.com's
+    // own homepage as if it were the studio's profile.
+    linkedin: "" as string,
   },
 } as const;
 
