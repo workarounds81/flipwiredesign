@@ -14,7 +14,7 @@ into `src/content/projects.ts`.
 
 ## Choosing shots
 
-Only the **cover** is cropped — to 4:5 for the grid thumbnail, so centre the
+Only the **cover** is cropped — to 4:3 for the grid thumbnail, so centre the
 subject in whichever image you pick as the cover. Gallery images are shown at
 their natural aspect and are never cropped, so portrait and landscape can be
 mixed freely.

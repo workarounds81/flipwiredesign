@@ -28,7 +28,9 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
   return (
     <article>
       <Link href={`/projects/${project.slug}`} className="group block">
-        <div className="media-zoom relative aspect-[4/5] overflow-hidden bg-bone-deep">
+        {/* 4:3 — the archive is mostly landscape, and a portrait crop slices
+            a room in half. Only the cover is cropped; galleries stay natural. */}
+        <div className="media-zoom relative aspect-[4/3] overflow-hidden bg-bone-deep">
           <Image
             src={assetPath(project.cover)}
             alt={project.location ? `${project.title}, ${project.location}` : project.title}

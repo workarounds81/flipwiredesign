@@ -1,6 +1,11 @@
 # Photo inbox
 
-Drop compressed project photos here. Claude reads them from the repo, groups
+**Currently holding the images that have not been assigned to a project yet.**
+They are here because their unit could not be identified from the photograph
+alone — mostly single shots of similar white-and-oak flats that could belong to
+any of several jobs. Say which job a batch belongs to and they get filed.
+
+Drop new compressed project photos here too. Claude reads them from the repo, groups
 them into projects, writes the entries, moves the files into
 `public/projects/<slug>/`, and empties this folder.
 
