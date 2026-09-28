@@ -476,6 +476,91 @@ export const projects: Project[] = [
       { src: "/projects/concrete-counter-galley/07.jpg", width: 1800, height: 2400 },
     ],
   },
+  {
+    slug: "white-island-kitchen",
+    title: "White Island Kitchen",
+    category: "Condominium",
+    unitType: "Apartment",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "A single white island with no upper cabinets facing it, and full-height storage pushed to the back wall so the room reads as one space.",
+    cover: "/projects/white-island-kitchen/01.jpg",
+    gallery: [
+      { src: "/projects/white-island-kitchen/01.jpg", width: 2400, height: 1800 },
+      { src: "/projects/white-island-kitchen/02.jpg", width: 2400, height: 1800 },
+      { src: "/projects/white-island-kitchen/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/white-island-kitchen/04.jpg", width: 1800, height: 2400 },
+      { src: "/projects/white-island-kitchen/05.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "walnut-and-white-island",
+    title: "Walnut and White Island",
+    category: "Condominium",
+    unitType: "Apartment",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "Walnut fronts below a white solid-surface top, with the appliance wall built as one flush run beside the entrance.",
+    cover: "/projects/walnut-and-white-island/01.jpg",
+    gallery: [
+      { src: "/projects/walnut-and-white-island/01.jpg", width: 2400, height: 1800 },
+      { src: "/projects/walnut-and-white-island/02.jpg", width: 2400, height: 1800 },
+      { src: "/projects/walnut-and-white-island/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/walnut-and-white-island/04.jpg", width: 2400, height: 1800 },
+      { src: "/projects/walnut-and-white-island/05.jpg", width: 2400, height: 1800 },
+      { src: "/projects/walnut-and-white-island/06.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "green-fitted-wardrobes",
+    title: "Green Fitted Wardrobes",
+    category: "HDB",
+    unitType: "Flat",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "Sage shaker wardrobes run the length of the hall, set against a timber feature wall in the living room.",
+    cover: "/projects/green-fitted-wardrobes/01.jpg",
+    gallery: [
+      { src: "/projects/green-fitted-wardrobes/01.jpg", width: 1800, height: 2400 },
+      { src: "/projects/green-fitted-wardrobes/02.jpg", width: 1800, height: 2400 },
+      { src: "/projects/green-fitted-wardrobes/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/green-fitted-wardrobes/04.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "pale-oak-storage-wall",
+    title: "Pale Oak Storage Wall",
+    category: "HDB",
+    unitType: "Flat",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "Pale oak carpentry carried from the entrance through to the bedroom — wardrobe, desk, platform and shelf as one continuous line, lit from within.",
+    cover: "/projects/pale-oak-storage-wall/01.jpg",
+    gallery: [
+      { src: "/projects/pale-oak-storage-wall/01.jpg", width: 2400, height: 1346 },
+      { src: "/projects/pale-oak-storage-wall/02.jpg", width: 1800, height: 2400 },
+      { src: "/projects/pale-oak-storage-wall/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/pale-oak-storage-wall/04.jpg", width: 1346, height: 2400 },
+      { src: "/projects/pale-oak-storage-wall/05.jpg", width: 1346, height: 2400 },
+      { src: "/projects/pale-oak-storage-wall/06.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "concrete-and-glazed-tile",
+    title: "Concrete and Glazed Tile",
+    category: "HDB",
+    unitType: "Flat",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "A poured concrete island down the middle of the plan, with the bathroom finished in the same concrete against small glazed tile.",
+    cover: "/projects/concrete-and-glazed-tile/01.jpg",
+    gallery: [
+      { src: "/projects/concrete-and-glazed-tile/01.jpg", width: 1800, height: 2400 },
+      { src: "/projects/concrete-and-glazed-tile/02.jpg", width: 2400, height: 1800 },
+      { src: "/projects/concrete-and-glazed-tile/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/concrete-and-glazed-tile/04.jpg", width: 1800, height: 2400 },
+    ],
+  },
 ];
 
 export const categories: Category[] = ["HDB", "Condominium", "Landed", "Commercial"];
