@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "A members' lounge and bar in the tower's upper floors. A brass fin ceiling runs the length of the room above a fluted teal bar front, with convex mirrors and suspended brass shelving carrying the back bar.",
     cover: "/projects/centennial-tower-lounge-bar/01.jpg",
     gallery: [
-      { src: "/projects/centennial-tower-lounge-bar/01.jpg", width: 2400, height: 1800 },
+      { src: "/projects/centennial-tower-lounge-bar/01.jpg", width: 1623, height: 969 },
       { src: "/projects/centennial-tower-lounge-bar/02.jpg", width: 2400, height: 1800 },
       { src: "/projects/centennial-tower-lounge-bar/03.jpg", width: 2400, height: 1800 },
       { src: "/projects/centennial-tower-lounge-bar/04.jpg", width: 2400, height: 1800 },
@@ -96,6 +96,7 @@ export const projects: Project[] = [
       { src: "/projects/centennial-tower-lounge-bar/12.jpg", width: 2400, height: 1800 },
       { src: "/projects/centennial-tower-lounge-bar/13.jpg", width: 2400, height: 1800 },
       { src: "/projects/centennial-tower-lounge-bar/14.jpg", width: 2400, height: 1800 },
+      { src: "/projects/centennial-tower-lounge-bar/15.jpg", width: 2400, height: 1800 },
     ],
     featured: true,
   },
