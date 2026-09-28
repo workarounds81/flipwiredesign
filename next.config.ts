@@ -31,6 +31,14 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
     formats: ["image/avif", "image/webp"],
     unoptimized: isStaticExport,
+    // Project photos can carry a `?v=N` cache-buster — see assetRevisions in
+    // src/lib/site.ts. Next rejects a query string on a local image unless a
+    // pattern permits it, and a pattern with no `search` permits any. Only the
+    // photo directory gets that; everything else must be unversioned.
+    localPatterns: [
+      { pathname: "/projects/**" },
+      { pathname: "/**", search: "" },
+    ],
   },
 };
 
