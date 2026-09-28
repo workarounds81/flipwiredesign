@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,7 +14,12 @@ export default function ContactPage() {
       <p className="mt-10 font-display text-3xl font-light leading-snug md:text-4xl">
         New projects, press and collaboration.
       </p>
-      <dl className="mt-12 space-y-8 text-sm">
+      <WhatsAppButton
+        className="mt-10"
+        message={`Hi ${site.name}, I'd like to enquire about a renovation.`}
+      />
+
+      <dl className="mt-14 space-y-8 text-sm">
         <div>
           <dt className="label text-muted">Email</dt>
           <dd className="mt-2">
@@ -24,7 +30,7 @@ export default function ContactPage() {
         </div>
         {site.phone && (
           <div>
-            <dt className="label text-muted">Telephone</dt>
+            <dt className="label text-muted">Telephone / WhatsApp</dt>
             <dd className="mt-2">
               <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-clay-ink">
                 {site.phone}

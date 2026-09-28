@@ -11,8 +11,10 @@ export const site = {
     "Flipwire Design Pte Ltd is a Singapore interior design practice. Renovation, built-in carpentry and fit-out for HDB and condominium homes and commercial spaces.",
   url: "https://www.flipwiredesign.com",
   email: "info@flipwiredesign.com",
-  // Widened to string so the "no phone yet" branches stay live under `as const`.
-  phone: "" as string, // e.g. "+65 6xxx xxxx" — shown on the contact page once set
+  // Widened to string so the "not set yet" branches stay live under `as const`.
+  phone: "+65 8312 7675" as string,
+  /** Same line as `phone`. Empty disables the WhatsApp button everywhere. */
+  whatsapp: "+65 8312 7675" as string,
   uen: "201613746K",
   address: {
     street: "3026 Ubi Road 1",
@@ -44,6 +46,17 @@ export const nav = [
  * paths it generates itself. On a root domain BASE_PATH is empty and this is a
  * no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
  */
+/**
+ * wa.me needs the number in international format with no +, spaces or dashes.
+ * Returns "" when no number is set, so callers can skip the button entirely.
+ */
+export function whatsappLink(message?: string) {
+  const digits = site.whatsapp.replace(/\D/g, "");
+  if (!digits) return "";
+  const q = message ? `?text=${encodeURIComponent(message)}` : "";
+  return `https://wa.me/${digits}${q}`;
+}
+
 /** The postal address as lines, for a footer or contact block. */
 export function addressLines() {
   const { street, unit, city, postalCode } = site.address;
