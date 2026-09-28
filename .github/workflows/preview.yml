@@ -40,6 +40,10 @@ jobs:
           STATIC_EXPORT: "1"
           # Project sites are served from /<repo>, so the app needs a base path.
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Optional. Until this repository secret exists the enquiry form
+          # still works — it just skips the emailed copy and goes straight
+          # to WhatsApp.
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
         run: npm run build
 
       # Without this, Pages runs the output through Jekyll, which drops

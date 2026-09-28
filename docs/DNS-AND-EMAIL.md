@@ -105,3 +105,28 @@ reports at each step.
 
 Worth doing when the studio has more than one person on email, or when quotes
 start bouncing. Not before.
+
+## The enquiry form
+
+`src/components/EnquiryForm.tsx` composes the answers into a message and hands
+off to WhatsApp via `wa.me`.
+
+A `wa.me` link does not submit anything. It opens WhatsApp with the message
+pre-filled and the sender still has to press send — so an abandoned enquiry
+leaves no trace at all. To avoid losing those, the form also POSTs a copy to
+[Web3Forms](https://web3forms.com), which emails it to `info@flipwiredesign.com`.
+
+**To turn the emailed copy on:**
+
+1. Get a free access key at web3forms.com using `info@flipwiredesign.com`
+2. Repository **Settings → Secrets and variables → Actions → New repository
+   secret**, named `WEB3FORMS_KEY`
+3. Push, or re-run the Preview workflow
+
+Until that secret exists the form still works — it just skips the email and
+goes straight to WhatsApp. Nothing breaks, and no error is shown.
+
+The key is public by design: it is compiled into the page and anyone can read
+it. It only permits submissions to the one address it was issued for, so the
+worst case is spam in that inbox, which Web3Forms filters. Never put anything
+that is meant to stay secret behind a `NEXT_PUBLIC_` variable.

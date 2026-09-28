@@ -5,7 +5,7 @@ import { addressLines, nav, site } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="mt-32 border-t border-line/70 bg-bone-deep">
-      <div className="mx-auto grid max-w-[1680px] gap-12 px-6 py-16 md:grid-cols-3 md:px-10">
+      <div className="mx-auto grid max-w-[1680px] gap-12 px-6 py-16 md:grid-cols-4 md:px-10">
         <div>
           {/* Secondary logo placement — larger, decorative, not a link. */}
           <Logo width={168} asLink={false} className="h-auto w-[150px]" />
@@ -22,6 +22,23 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="label text-muted">Also by us</h2>
+          <ul className="mt-5 space-y-2 text-sm">
+            <li>
+              <a
+                href={site.sister.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-clay-ink"
+              >
+                {site.sister.name}
+              </a>
+            </li>
+            <li className="max-w-xs text-ink-soft">{site.sister.blurb}</li>
           </ul>
         </div>
 

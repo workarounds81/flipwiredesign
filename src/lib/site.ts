@@ -23,6 +23,14 @@ export const site = {
     postalCode: "408719",
     country: "SG",
   },
+  /** The studio's partitioning and painting site. Verified: resolves to the
+   *  same GitHub Pages host as this one. Note it is "partitionwork", not
+   *  "partitionworks" — the plural is a different, parked domain. */
+  sister: {
+    name: "Partitionwork",
+    url: "https://www.partitionwork.com",
+    blurb: "Office partitioning, drywall and painting",
+  },
   social: {
     instagram: "https://www.instagram.com/flipwire/",
     // Empty until the studio has a company page. An empty string is skipped

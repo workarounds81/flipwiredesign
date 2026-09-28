@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import { addressLines, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -9,17 +9,14 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-4xl px-6 py-24 md:py-32">
       <h1 className="label text-muted">Contact</h1>
       <p className="mt-10 font-display text-3xl font-light leading-snug md:text-4xl">
         New projects, press and collaboration.
       </p>
-      <WhatsAppButton
-        className="mt-10"
-        message={`Hi ${site.name}, I'd like to enquire about a renovation.`}
-      />
+      <EnquiryForm />
 
-      <dl className="mt-14 space-y-8 text-sm">
+      <dl className="mt-20 space-y-8 border-t border-line pt-14 text-sm">
         <div>
           <dt className="label text-muted">Email</dt>
           <dd className="mt-2">
