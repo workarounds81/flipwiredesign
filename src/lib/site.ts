@@ -47,14 +47,6 @@ export const nav = [
 ] as const;
 
 /**
- * Prefix a path under /public with the deployment's base path.
- *
- * Needed because the static export runs with `images.unoptimized`, and an
- * unoptimised <Image> passes `src` through untouched — Next only rewrites the
- * paths it generates itself. On a root domain BASE_PATH is empty and this is a
- * no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
- */
-/**
  * wa.me needs the number in international format with no +, spaces or dashes.
  * Returns "" when no number is set, so callers can skip the button entirely.
  */
@@ -71,7 +63,31 @@ export function addressLines() {
   return [[street, unit].filter(Boolean).join(", "), `${city} ${postalCode}`];
 }
 
+/**
+ * Photos whose bytes were replaced without changing the filename.
+ *
+ * The static export builds with `unoptimized: true`, so `next/image` serves
+ * `/projects/.../01.jpg` verbatim instead of a content-hashed URL. Swap the file
+ * and the URL is unchanged, so browsers and the CDN keep serving the old bytes —
+ * indefinitely, for anyone who visited before the swap. Bump the number here
+ * whenever you overwrite a photo in place and the new one needs to reach people
+ * who already have the old one cached.
+ */
+const assetRevisions: Record<string, number> = {
+  "/projects/centennial-tower-lounge-bar/01.jpg": 2,
+};
+
+/**
+ * Prefix a path under /public with the deployment's base path, and append the
+ * asset's revision if it has one.
+ *
+ * Needed because the static export runs with `images.unoptimized`, and an
+ * unoptimised <Image> passes `src` through untouched — Next only rewrites the
+ * paths it generates itself. On a root domain BASE_PATH is empty and the prefix
+ * is a no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
+ */
 export function assetPath(path: string) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  return `${base}${path}`;
+  const revision = assetRevisions[path];
+  return `${base}${path}${revision ? `?v=${revision}` : ""}`;
 }
