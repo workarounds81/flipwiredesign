@@ -561,6 +561,91 @@ export const projects: Project[] = [
       { src: "/projects/concrete-and-glazed-tile/04.jpg", width: 1800, height: 2400 },
     ],
   },
+  {
+    slug: "brass-fin-corridor",
+    title: "Brass Fin Corridor",
+    category: "Commercial",
+    unitType: "Approach and lift lobby",
+    location: "Centennial Tower",
+    scope: ["Fit-out", "Carpentry"],
+    excerpt:
+      "The approach to the lounge: timber-lined walls, brass fins set into the reveals and a run of patterned carpet drawing the eye through.",
+    cover: "/projects/brass-fin-corridor/01.jpg",
+    gallery: [
+      { src: "/projects/brass-fin-corridor/01.jpg", width: 1800, height: 2400 },
+      { src: "/projects/brass-fin-corridor/02.jpg", width: 1800, height: 2400 },
+      { src: "/projects/brass-fin-corridor/03.jpg", width: 1024, height: 1820 },
+      { src: "/projects/brass-fin-corridor/04.jpg", width: 1346, height: 2400 },
+    ],
+  },
+  {
+    slug: "glazed-lounge-meeting-rooms",
+    title: "Glazed Lounge and Meeting Rooms",
+    category: "Commercial",
+    unitType: "Lounge and meeting rooms",
+    location: "Centennial Tower",
+    scope: ["Fit-out", "Carpentry"],
+    excerpt:
+      "Black steel glazing separates the meeting rooms from the lounge without closing either off, with panelled walls and the city beyond the glass.",
+    cover: "/projects/glazed-lounge-meeting-rooms/01.jpg",
+    gallery: [
+      { src: "/projects/glazed-lounge-meeting-rooms/01.jpg", width: 2400, height: 1800 },
+      { src: "/projects/glazed-lounge-meeting-rooms/02.jpg", width: 2400, height: 1800 },
+      { src: "/projects/glazed-lounge-meeting-rooms/03.jpg", width: 2400, height: 1800 },
+      { src: "/projects/glazed-lounge-meeting-rooms/04.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "oak-wardrobes-and-corridors",
+    title: "Oak Wardrobes and Corridors",
+    category: "HDB",
+    unitType: "Flat",
+    scope: ["Carpentry"],
+    excerpt:
+      "Wardrobes and overhead storage built flush into the corridor walls, so a narrow plan reads wider than it is.",
+    cover: "/projects/oak-wardrobes-and-corridors/01.jpg",
+    gallery: [
+      { src: "/projects/oak-wardrobes-and-corridors/01.jpg", width: 2400, height: 1523 },
+      { src: "/projects/oak-wardrobes-and-corridors/02.jpg", width: 2400, height: 1597 },
+      { src: "/projects/oak-wardrobes-and-corridors/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/oak-wardrobes-and-corridors/04.jpg", width: 1346, height: 2400 },
+      { src: "/projects/oak-wardrobes-and-corridors/05.jpg", width: 1800, height: 2400 },
+      { src: "/projects/oak-wardrobes-and-corridors/06.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "dark-kitchen-white-counter",
+    title: "Dark Kitchen, White Counter",
+    category: "HDB",
+    unitType: "Flat",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "Dark timber and near-black cabinetry under a white counter, with the cooking wall kept deliberately plain.",
+    cover: "/projects/dark-kitchen-white-counter/01.jpg",
+    gallery: [
+      { src: "/projects/dark-kitchen-white-counter/01.jpg", width: 2400, height: 1552 },
+      { src: "/projects/dark-kitchen-white-counter/02.jpg", width: 1800, height: 2400 },
+      { src: "/projects/dark-kitchen-white-counter/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/dark-kitchen-white-counter/04.jpg", width: 1800, height: 2400 },
+    ],
+  },
+  {
+    slug: "stair-landing-oak-floor",
+    title: "Stair, Landing, Oak Floor",
+    category: "Condominium",
+    unitType: "Maisonette",
+    scope: ["Full renovation"],
+    excerpt:
+      "The stair and the landing above it, taken as one piece of joinery — black treads against oak boards, with the balustrade left open.",
+    cover: "/projects/stair-landing-oak-floor/01.jpg",
+    gallery: [
+      { src: "/projects/stair-landing-oak-floor/01.jpg", width: 1800, height: 2400 },
+      { src: "/projects/stair-landing-oak-floor/02.jpg", width: 1800, height: 2400 },
+      { src: "/projects/stair-landing-oak-floor/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/stair-landing-oak-floor/04.jpg", width: 2400, height: 1800 },
+      { src: "/projects/stair-landing-oak-floor/05.jpg", width: 1800, height: 2400 },
+    ],
+  },
 ];
 
 export const categories: Category[] = ["HDB", "Condominium", "Landed", "Commercial"];
