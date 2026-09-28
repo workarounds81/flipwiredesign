@@ -1,6 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./Logo";
+import partitionwork from "@/../public/brand/partitionwork-wordmark.png";
 import { addressLines, nav, site } from "@/lib/site";
+
+// The supplied logo is white type on near-black. `partitionwork-logo-source.png`
+// beside it is that original; the wordmark here is it keyed to transparent with
+// the type inverted to the site's charcoal, so it reads on cream. Transparent
+// rather than cream-filled, so there is no seam against the footer band.
+const PARTITIONWORK_WIDTH = 140;
 
 export function SiteFooter() {
   return (
@@ -33,12 +41,21 @@ export function SiteFooter() {
                 href={site.sister.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-clay-ink"
+                className="inline-block transition-opacity hover:opacity-70"
               >
-                {site.sister.name}
+                <Image
+                  src={partitionwork}
+                  alt={site.sister.name}
+                  width={PARTITIONWORK_WIDTH}
+                  height={Math.round(
+                    (PARTITIONWORK_WIDTH * partitionwork.height) / partitionwork.width,
+                  )}
+                  sizes={`${PARTITIONWORK_WIDTH}px`}
+                  className="h-auto w-[140px]"
+                />
               </a>
             </li>
-            <li className="max-w-xs text-ink-soft">{site.sister.blurb}</li>
+            <li className="max-w-xs pt-1 text-ink-soft">{site.sister.blurb}</li>
           </ul>
         </div>
 
