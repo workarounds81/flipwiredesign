@@ -151,8 +151,8 @@ export const projects: Project[] = [
   {
     slug: "timber-screens-polished-concrete",
     title: "Timber Screens, Polished Concrete",
-    category: "Condominium",
-    unitType: "Apartment",
+    category: "HDB",
+    unitType: "Flat",
     scope: ["Full renovation", "Carpentry"],
     excerpt:
       "Vertical timber screens divide the plan without closing it, set against polished concrete floors and a black steel frame carried across the ceiling.",
@@ -178,8 +178,8 @@ export const projects: Project[] = [
   {
     slug: "concrete-island-kitchen",
     title: "Concrete Island Kitchen",
-    category: "Condominium",
-    unitType: "Apartment",
+    category: "HDB",
+    unitType: "Flat",
     scope: ["Full renovation", "Carpentry"],
     excerpt:
       "A cast concrete island runs the length of the kitchen, lit from a black steel frame hung above it.",
@@ -248,8 +248,8 @@ export const projects: Project[] = [
   {
     slug: "zebrano-galley-kitchen",
     title: "Zebrano Galley Kitchen",
-    category: "Condominium",
-    unitType: "Apartment",
+    category: "HDB",
+    unitType: "Flat",
     scope: ["Carpentry"],
     excerpt:
       "Figured zebrano veneer above and below a white solid-surface counter, with the splashback lit from behind the upper run.",
@@ -268,9 +268,9 @@ export const projects: Project[] = [
   },
   {
     slug: "black-stair-maisonette",
-    title: "Black Stair Maisonette",
+    title: "Black Stair Penthouse",
     category: "Condominium",
-    unitType: "Maisonette",
+    unitType: "Penthouse",
     scope: ["Full renovation"],
     excerpt:
       "A black stair and mesh balustrade cut through the double-height volume, left deliberately spare against white walls and oak floors.",
@@ -337,7 +337,7 @@ export const projects: Project[] = [
     slug: "walnut-island-gloss-floor",
     title: "Walnut Island, Gloss Floor",
     category: "Condominium",
-    unitType: "Apartment",
+    unitType: "Penthouse",
     scope: ["Full renovation", "Carpentry"],
     excerpt:
       "A walnut-fronted island set against gloss porcelain, with the kitchen left open to the living room.",
@@ -408,8 +408,8 @@ export const projects: Project[] = [
   {
     slug: "stainless-steel-kitchen",
     title: "Stainless Steel Kitchen",
-    category: "Condominium",
-    unitType: "Apartment",
+    category: "HDB",
+    unitType: "Flat",
     scope: ["Carpentry"],
     excerpt:
       "A commercial-grade stainless run — splashback, counter and hood in one material — over pale cabinetry.",
@@ -633,7 +633,7 @@ export const projects: Project[] = [
     slug: "stair-landing-oak-floor",
     title: "Stair, Landing, Oak Floor",
     category: "Condominium",
-    unitType: "Maisonette",
+    unitType: "Penthouse",
     scope: ["Full renovation"],
     excerpt:
       "The stair and the landing above it, taken as one piece of joinery — black treads against oak boards, with the balustrade left open.",
