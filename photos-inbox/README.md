@@ -5,9 +5,29 @@ They are here because their unit could not be identified from the photograph
 alone — mostly single shots of similar white-and-oak flats that could belong to
 any of several jobs. Say which job a batch belongs to and they get filed.
 
-Drop new compressed project photos here too. Claude reads them from the repo, groups
-them into projects, writes the entries, moves the files into
-`public/projects/<slug>/`, and empties this folder.
+## One folder per project
+
+Drop new compressed photos here in a folder named the way the headline should
+read — `UE Residence - Penthouse`, `Toa Payoh - 5rm HDB`. That name becomes the
+project title. Claude picks and orders the photos, writes the copy, and copies
+the chosen ones into `public/projects/<slug>/` as `01.jpg`, `02.jpg` and so on.
+
+**The source folder stays here until you have seen the published page and said
+it is right.** Only then is it cleared. Deleting it at publish time means a
+change of mind — a different cover, a frame dropped — has to be recovered out
+of git history before anything can be re-picked, which is a round trip for no
+reason. Nothing is ever lost either way, since every upload is a commit, but
+the folder is cheaper to reach for than the history is.
+
+A folder still sitting here therefore means one of two things: not filed yet,
+or filed and waiting on your sign-off.
+
+### Which branch
+
+Upload to whatever branch GitHub offers by default — but note the site only
+deploys from `main`. If the repository default is set to anything else, an
+upload will sit unpublished until it is moved across. Keeping the default at
+`main` avoids that entirely.
 
 **Compress before uploading.** Raw camera files are 5–8 MB each; 350 of them
 would be ~2 GB, past what GitHub Pages will serve and far past what belongs in
