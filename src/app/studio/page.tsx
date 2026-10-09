@@ -3,7 +3,11 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Studio",
-  description: `About ${site.legalName}.`,
+  // Drawn from the studio narrative below rather than describing it, so the
+  // search result reads as a sentence about the practice. ~155 characters.
+  description:
+    `${site.legalName} is an interior architecture and design practice in ${site.address.city}. ` +
+    "Structural overhauls, penthouse builds, HDB, landed and commercial work.",
 };
 
 export default function StudioPage() {
@@ -16,12 +20,22 @@ export default function StudioPage() {
       </p>
       <div className="mt-10 space-y-6 text-base leading-relaxed text-ink-soft">
         <p>
-          Replace this with the studio narrative — how the practice started, how you work with
-          clients, and the disciplines you cover.
+          Founded with a commitment to uncompromised craftsmanship and spatial clarity, Flipwire
+          Design approaches interior environments with an engineering mindset and a refined design
+          sensibility. From complex structural overhauls and bespoke penthouse builds to tailored
+          HDB, landed, and commercial transformations across {site.address.city}, our work balances
+          architectural precision with quiet luxury.
         </p>
         <p>
-          Keep it to three or four paragraphs. The work should carry the page; this is context,
-          not a brochure.
+          We partner closely with residential homeowners and commercial clients from conceptual
+          space planning through to heavy site execution, wet works, custom joinery, and final
+          handover. By managing design and build under one unified practice, we preserve the
+          integrity of every line, material choice, and custom detail.
+        </p>
+        <p>
+          Our practice covers full-scope interior architecture, spatial re-engineering, structural
+          modification, and high-end bespoke carpentry across {site.address.city}&rsquo;s
+          residential and commercial landscape.
         </p>
       </div>
     </section>
