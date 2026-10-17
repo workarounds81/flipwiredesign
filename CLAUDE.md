@@ -87,6 +87,11 @@ the studio says.
   House and some DSC frames from the McNair shoot. Seven Yishun frames are
   duplicated there too and can go.
 - `timber-feature-wall` is a mixed grouping: some frames may belong to
-  Queensway — Anchorage. Verify before trusting it.
+  Queensway — Anchorage. Verify before trusting it. (Its bedroom frame 04 was
+  Bukit Panjang and has been removed.)
+- `walnut-and-white-island` and `dark-kitchen-white-counter` each lost frames
+  to Bukit Panjang; their remaining frames are still unverified groupings.
+- `photos-inbox/IMG_5205_result.jpg` (root) shares a filename with a Bukit
+  Panjang frame but is a different image — do not assume it belongs there.
 - Studio copy mentions landed work; no landed project is published yet.
 - The two `dont upload*.jpg` files remain in git history on a public repo.

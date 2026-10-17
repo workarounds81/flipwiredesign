@@ -416,6 +416,31 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "bukit-panjang-2-room",
+    title: "Bukit Panjang — 2-Room Condo",
+    category: "Condominium",
+    unitType: "2-room apartment",
+    location: "Bukit Panjang",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "A compact condo where the false ceiling does the zoning — a lit L-box marks out the open kitchen, so a small living area does not need walls to feel organised.",
+    body: [
+      "In a 2-room unit every wall you add costs floor area, so the kitchen stays open to the living room and the ceiling separates them instead. The false ceiling drops over the kitchen as an L-box with cove lighting along its edge and downlights underneath, which gives the cooking zone its own light and its own outline. Over the living area the ceiling stays at full height, with a black track light that can be re-aimed if the furniture moves — easier than re-wiring downlights once the ceiling is closed up.",
+      "The kitchen is white handleless cabinetry with a black granite top running out into a peninsula, which is the dining table, the extra prep space and the breakfast counter in one. Granite was chosen for the counter because it takes hot pots and daily scrubbing without staining, and black hides wear that a pale top would show within a year. The oven is built into the base run so the counter stays clear.",
+      "At the entrance, a low shoe cabinet and a separate upper cabinet in pale oak laminate leave the wall between them open, so the entrance does not feel boxed in by a full-height cabinet in a small space. The bedroom carries the same oak: a sliding-door wardrobe, which needs no swing space in front of it, and a study desk with drawers built right up to the window, lit from a pelmet above. Vinyl plank in the bedroom is warmer underfoot than the large-format tile used in the living area and kitchen, where the floor has to stand up to spills.",
+      "Both bathrooms use the same glazed grey-green tile in the shower and a cement-finish ledge that hides the concealed cistern and gives a shelf for toiletries. The wall-hung WC leaves the floor clear underneath, so mopping is one pass instead of working around a pedestal. One bathroom has a vessel basin on a long vanity with a mirror cabinet lit from below; the other uses a compact basin to fit the narrower room. A frameless glass screen keeps the water in the shower without the visual weight of a full enclosure.",
+    ],
+    cover: "/projects/bukit-panjang-2-room/01.jpg",
+    gallery: [
+      { src: "/projects/bukit-panjang-2-room/01.jpg", width: 2400, height: 1553 },
+      { src: "/projects/bukit-panjang-2-room/02.jpg", width: 2400, height: 1552 },
+      { src: "/projects/bukit-panjang-2-room/03.jpg", width: 1800, height: 2400 },
+      { src: "/projects/bukit-panjang-2-room/04.jpg", width: 2400, height: 2153 },
+      { src: "/projects/bukit-panjang-2-room/05.jpg", width: 2400, height: 1778 },
+    ],
+    featured: true,
+  },
+  {
     slug: "route-65-bar-kitchen",
     title: "Route 65 Bar + Kitchen",
     category: "Commercial",
@@ -547,22 +572,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "concrete-vanity-bathroom",
-    title: "Concrete Vanity Bathroom",
-    category: "HDB",
-    unitType: "Flat",
-    scope: ["Full renovation"],
-    excerpt:
-      "A cast concrete vanity and shelf against glazed brick tile, with a wall-hung pan and a walk-in shower.",
-    cover: "/projects/concrete-vanity-bathroom/01.jpg",
-    gallery: [
-      { src: "/projects/concrete-vanity-bathroom/01.jpg", width: 1800, height: 2400 },
-      { src: "/projects/concrete-vanity-bathroom/02.jpg", width: 1800, height: 2400 },
-      { src: "/projects/concrete-vanity-bathroom/03.jpg", width: 1800, height: 2400 },
-      { src: "/projects/concrete-vanity-bathroom/04.jpg", width: 2400, height: 1800 },
-    ],
-  },
-  {
     slug: "stainless-steel-kitchen",
     title: "Stainless Steel Kitchen",
     category: "HDB",
@@ -592,7 +601,6 @@ export const projects: Project[] = [
       { src: "/projects/timber-feature-wall/01.jpg", width: 2400, height: 1800 },
       { src: "/projects/timber-feature-wall/02.jpg", width: 2400, height: 1346 },
       { src: "/projects/timber-feature-wall/03.jpg", width: 2400, height: 1346 },
-      { src: "/projects/timber-feature-wall/04.jpg", width: 1800, height: 2400 },
       { src: "/projects/timber-feature-wall/05.jpg", width: 1800, height: 2400 },
     ],
   },
@@ -645,8 +653,6 @@ export const projects: Project[] = [
       { src: "/projects/walnut-and-white-island/01.jpg", width: 2400, height: 1800 },
       { src: "/projects/walnut-and-white-island/02.jpg", width: 2400, height: 1800 },
       { src: "/projects/walnut-and-white-island/03.jpg", width: 1800, height: 2400 },
-      { src: "/projects/walnut-and-white-island/04.jpg", width: 2400, height: 1800 },
-      { src: "/projects/walnut-and-white-island/05.jpg", width: 2400, height: 1800 },
       { src: "/projects/walnut-and-white-island/06.jpg", width: 1800, height: 2400 },
     ],
   },
@@ -692,9 +698,8 @@ export const projects: Project[] = [
     scope: ["Full renovation", "Carpentry"],
     excerpt:
       "Dark timber and near-black cabinetry under a white counter, with the cooking wall kept deliberately plain.",
-    cover: "/projects/dark-kitchen-white-counter/01.jpg",
+    cover: "/projects/dark-kitchen-white-counter/03.jpg",
     gallery: [
-      { src: "/projects/dark-kitchen-white-counter/01.jpg", width: 2400, height: 1552 },
       { src: "/projects/dark-kitchen-white-counter/02.jpg", width: 1800, height: 2400 },
       { src: "/projects/dark-kitchen-white-counter/03.jpg", width: 1800, height: 2400 },
       { src: "/projects/dark-kitchen-white-counter/04.jpg", width: 1800, height: 2400 },
