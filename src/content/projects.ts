@@ -441,6 +441,33 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "bukit-panjang-4-room",
+    title: "Bukit Panjang — 4-Room HDB",
+    category: "HDB",
+    unitType: "4-room flat",
+    location: "Bukit Panjang",
+    scope: ["Full renovation", "Carpentry"],
+    excerpt:
+      "A 4-room flat in black, timber grain and cement grey — dark where hands and pots go, pale where the light needs to bounce.",
+    body: [
+      "The palette was set by maintenance, not mood. Everything at hand height in the kitchen is black: base cabinets, granite counter and a glass splashback behind the hob, because black hides the fingerprints, oil and scuffs that show on white within months. The upper cabinets switch to a timber-grain laminate so the kitchen does not close in, and the walls around it are left in a cement finish that does not need repainting when it gets marked.",
+      "The living room is kept simple: white walls, a timber trim running along the top of the wall, and a recessed niche lit from above for the owner's prints. A niche costs very little extra at the partition board stage and gives a display ledge that does not stick out into a narrow room. Lighting is on black track rails, so spotlights can be moved when the furniture or the artwork changes, without calling the electrician back.",
+      "Storage near the entrance is a full-height black cabinet under a copper pendant, so shoes and bags go behind closed doors instead of piling up at the door. The washer and dryer are stacked in a cement-finish recess with a light above, which takes half the floor space of side-by-side machines and keeps them out of the kitchen.",
+      "In the bathroom, black hexagon tiles line the shower behind a frameless glass screen, with a timber-grain vanity and a mirror cabinet over a top-mount basin. At the front door, a black steel gate with expanded mesh panels lets air through while the main door stands open, which matters in an HDB corridor flat.",
+    ],
+    cover: "/projects/bukit-panjang-4-room/01.jpg",
+    gallery: [
+      { src: "/projects/bukit-panjang-4-room/01.jpg", width: 800, height: 1067 },
+      { src: "/projects/bukit-panjang-4-room/02.jpg", width: 800, height: 1067 },
+      { src: "/projects/bukit-panjang-4-room/03.jpg", width: 800, height: 1067 },
+      { src: "/projects/bukit-panjang-4-room/04.jpg", width: 800, height: 600 },
+      { src: "/projects/bukit-panjang-4-room/05.jpg", width: 800, height: 1067 },
+      { src: "/projects/bukit-panjang-4-room/06.jpg", width: 800, height: 1067 },
+      { src: "/projects/bukit-panjang-4-room/07.jpg", width: 800, height: 1067 },
+    ],
+    featured: true,
+  },
+  {
     slug: "route-65-bar-kitchen",
     title: "Route 65 Bar + Kitchen",
     category: "Commercial",
