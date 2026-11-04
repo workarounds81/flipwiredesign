@@ -117,17 +117,12 @@ Similar, and a good option if the domain is already on Cloudflare. Build command
 
 ### GitHub Pages
 
-Free, but it serves static files only, so `next/image` optimisation is off. If you
-go this route, add to `next.config.ts`:
-
-```ts
-output: "export",
-images: { unoptimized: true },
-```
-
-then add a workflow using `actions/upload-pages-artifact` and
+Free, but it serves static files only, so `next/image` cannot resize on request.
+This repo handles that already: `STATIC_EXPORT=1` switches to a static export with
+a custom loader, and `scripts/size-images.mjs` (run before every build) writes the
+smaller copies it points at. Then add a workflow using `actions/upload-pages-artifact` and
 `actions/deploy-pages`, and set **Settings → Pages → Source** to **GitHub Actions**.
-Compress project photography by hand first — unoptimised interiors shots are heavy.
+Keep importing photography with `npm run photos`, which compresses the originals.
 
 ---
 

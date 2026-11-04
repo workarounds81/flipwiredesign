@@ -66,8 +66,8 @@ export function addressLines() {
 /**
  * Photos whose bytes were replaced without changing the filename.
  *
- * The static export builds with `unoptimized: true`, so `next/image` serves
- * `/projects/.../01.jpg` verbatim instead of a content-hashed URL. Swap the file
+ * The static export serves `/projects/.../01.jpg` (and its pre-sized copies
+ * under `/sized/`) at a fixed path instead of a content-hashed URL. Swap the file
  * and the URL is unchanged, so browsers and the CDN keep serving the old bytes —
  * indefinitely, for anyone who visited before the swap. Bump the number here
  * whenever you overwrite a photo in place and the new one needs to reach people
@@ -81,9 +81,9 @@ const assetRevisions: Record<string, number> = {
  * Prefix a path under /public with the deployment's base path, and append the
  * asset's revision if it has one.
  *
- * Needed because the static export runs with `images.unoptimized`, and an
- * unoptimised <Image> passes `src` through untouched — Next only rewrites the
- * paths it generates itself. On a root domain BASE_PATH is empty and the prefix
+ * Needed because the static export uses a custom image loader
+ * (src/lib/image-loader.ts), and Next does not prefix the base path onto what a
+ * custom loader returns — it only rewrites the paths it generates itself. On a root domain BASE_PATH is empty and the prefix
  * is a no-op; on a GitHub Pages project site it prepends `/flipwiredesign`.
  */
 export function assetPath(path: string) {

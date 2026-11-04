@@ -16,9 +16,15 @@ re-deriving it.
 | Default branch | `main` — keep it that way, or web uploads land somewhere that never deploys |
 | Checks | `npm run lint`, `npm run typecheck`, `npm run build`, and `STATIC_EXPORT=1 npm run build` |
 
-Both builds matter and they fail differently. `STATIC_EXPORT=1` sets
-`images.unoptimized`, which skips checks the default build enforces — a query
+Both builds matter and they fail differently. `STATIC_EXPORT=1` swaps in a
+custom image loader, which skips checks the default build enforces — a query
 string on a local image passed the export and broke CI once. Run both.
+
+GitHub Pages cannot resize images, so `npm run build` first runs
+`scripts/size-images.mjs`, writing 640px and 1200px copies of every project
+photo to `public/sized/` (gitignored). `src/lib/image-loader.ts` points each
+srcset entry at the right copy, so phones never download the 2400px original.
+If you change the widths, change them in both files.
 
 The font comes from `next/font/google` at build time, so a bad minute at
 Google fails the deploy. If Preview fails on `cormorant_garamond` and nothing

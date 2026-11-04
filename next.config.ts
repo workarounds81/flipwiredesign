@@ -30,7 +30,16 @@ const nextConfig: NextConfig = {
     // Add the hostnames here as they come online.
     remotePatterns: [],
     formats: ["image/avif", "image/webp"],
-    unoptimized: isStaticExport,
+    // A static host cannot resize on request, so the export serves copies
+    // pre-sized by scripts/size-images.mjs through a custom loader. Device
+    // sizes match those copies; anything wider gets the 2400px original.
+    ...(isStaticExport
+      ? {
+          loader: "custom" as const,
+          loaderFile: "./src/lib/image-loader.ts",
+          deviceSizes: [640, 1200, 2400],
+        }
+      : {}),
     // Project photos can carry a `?v=N` cache-buster — see assetRevisions in
     // src/lib/site.ts. Next rejects a query string on a local image unless a
     // pattern permits it, and a pattern with no `search` permits any. Only the

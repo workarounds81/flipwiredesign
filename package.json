@@ -5,6 +5,7 @@
   "description": "Flipwire Design Pte Ltd \u2014 interior architecture and design studio website",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/size-images.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
