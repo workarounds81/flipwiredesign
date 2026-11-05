@@ -57,7 +57,17 @@ export default async function ProjectPage({ params }: Params) {
             height={photo.height}
             priority={i === 0}
             sizes="(min-width: 1400px) 1400px, 100vw"
-            className="h-auto w-full bg-bone-deep"
+            className="mx-auto h-auto bg-bone-deep"
+            // Landscape runs full width. Portrait is capped at 85% of the
+            // screen height and centred, so it does not fill the whole view.
+            // Neither is shown wider than the photo itself, so small archive
+            // files are not blown up soft.
+            style={{
+              width:
+                photo.height > photo.width
+                  ? `min(100%, ${photo.width}px, calc(85vh * ${photo.width} / ${photo.height}))`
+                  : `min(100%, ${photo.width}px)`,
+            }}
           />
         ))}
       </div>
