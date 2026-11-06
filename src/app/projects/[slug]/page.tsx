@@ -56,15 +56,8 @@ export default async function ProjectPage({ params }: Params) {
             width={photo.width}
             height={photo.height}
             priority={i === 0}
-            sizes="(min-width: 1100px) 1100px, 100vw"
-            className="mx-auto h-auto bg-bone-deep"
-            // Centred and sized to sit inside one screen: at most 1100px wide
-            // and 80% of the viewport tall, so no photo fills the whole page.
-            // Never wider than the photo itself, so small archive files are
-            // not blown up soft.
-            style={{
-              width: `min(100%, 1100px, ${photo.width}px, calc(80vh * ${photo.width} / ${photo.height}))`,
-            }}
+            sizes="(min-width: 1400px) 1400px, 100vw"
+            className="h-auto w-full bg-bone-deep"
           />
         ))}
       </div>
